@@ -168,3 +168,5 @@ window.exampleVideoData = [
     }
   }
 ];
+
+console.log('example vid arr.',exampleVideoData);
