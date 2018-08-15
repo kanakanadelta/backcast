@@ -10,11 +10,7 @@ var VideoListView = Backbone.View.extend({
     console.log('this.$el.child: ', this.$el.children())
 
     //need to make a new instance of a videoListEntry as a DOM element and append it to our list view. 
-    // $('').append(newVideoListEntry.render());
     this.$el.html(this.template());
-    //test//
-    // this.$el.find('body').append(`<div><p>Test</p></div>`);
-    // new VideoListEntryView({ model:  , el: '.video-list'});
     return this;
   },
 
