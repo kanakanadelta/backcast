@@ -4,9 +4,9 @@ var AppView = Backbone.View.extend({
   el: '#app',
 
   initialize: function() {
-    this.videos = new Videos();
+    this.videos = new Videos(exampleVideoData);
     //take the template, invokes it, and replaces the DOM node with that snippet
-    this.render()
+    this.render();
   },
 
 
@@ -15,13 +15,22 @@ var AppView = Backbone.View.extend({
 
     //make a new instance of VideoListView, searches DOM and replaces it with its VideoListView's el as a 2nd parameter
     new VideoListView({ 
+      //the 'this' keyword is referring to the AppView since we are in the AppView-- the new instance of it.
+      //this.$('.list') --> a jquery search of the DOM scoped to only the DOM node under the App component
+      //without the 'this.' it will search the entire DOM.
+      el: this.$('.list'),
       collection: this.videos, 
-      el: this.$('.list')
     }).render();
+
     new SearchView({model: this, 
       el: '.search'
     });
-    new VideoPlayerView({model: this, el: '.player'});
+
+    new VideoPlayerView({
+      model: this, 
+      el: '.player'
+    });
+
     return this;
   },
 

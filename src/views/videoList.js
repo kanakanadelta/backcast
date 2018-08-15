@@ -5,17 +5,28 @@ var VideoListView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log('this.$el.child pre detach', this.$el.children());
+    //detaches the event listeners and empties it out so they don't build up
     this.$el.children().detach();
-    console.log('this.$el.child: ', this.$el.children())
-
     //need to make a new instance of a videoListEntry as a DOM element and append it to our list view. 
     this.$el.html(this.template());
+
+    //collection is an object in Backbone that has all the underscore methods in it
+    this.collection.each(this.renderVideo, this);
+
+    //returning a view, which is why we need the .el 
     return this;
+  },
+
+  renderVideo: function(video) {
+    this.$('.video-list').append(
+      // new instances made of VideoListEntrieViews to populate the video list
+      new VideoListEntryView({
+        model: video,
+      }).render().el
+    );
   },
 
   template: templateURL('src/templates/videoList.html')
 
 });
 
-var videoData

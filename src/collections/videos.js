@@ -11,7 +11,7 @@ var Videos = Backbone.Collection.extend({
       type: 'GET',
       url: 'https://www.googleapis.com/youtube/v3',
       key: 'AIzaSyD9C9SGrMwPAWXdgKz2dAePBTj1V4m8hp4',
-    })
+    });
     //end of AJAX function
   },
 
@@ -21,4 +21,4 @@ var Videos = Backbone.Collection.extend({
 
 });
 
-console.log('example vid arr.',exampleVideoData);
+console.log('example vid arr.', exampleVideoData);
